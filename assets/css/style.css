@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+  }
+  
+
+
+#directions-Text {
+    text-align: center;
+    padding: 20px;
+    margin: 5px;
+    color: #3DDB85;
+    background-color: purple;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#score {
+
+    position: fixed;
+    text-align: right;
+    bottom: 0;
+    right: 0;
+    color: white;
+    font-size: 24px;
+    padding: 20px;
+    margin: 5px;
+    background-color: purple;
+}
+
+#current-game-message {
+
+    font-size: 32px;
+    text-decoration: italic;
+    color: black;
+    font-weight: bold;
+    background-color: #3DDB85;
+}
+
+#current-version {
+    font-size: 40px;
+    text-align: center;
+    color: black;
+    margin: 50px;
+
+}
+
+#refreshed-content {
+    color: #3DDB85;
+    margin: 5px;
+    font-size: 22px;
+    padding: 20px;
+    background-color: purple;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+}
+
+@media screen and (max-width: 665px) {
+
+    #refreshed-content {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+
+    }
+
+    #socre {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        background-color: black;
+    }
+
+}
