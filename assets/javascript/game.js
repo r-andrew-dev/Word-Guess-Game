@@ -17,22 +17,22 @@ var androidVersions = ["cupcake", "donut", "eclair", "froyo", "gingerbread", "ho
 // Allowing the computer to randomly choose the version the user will try to guess.
 var computerChooseVersion = androidVersions[Math.floor(Math.random() * androidVersions.length)]
 
-
+console.log(computerChooseVersion)
 
 // Storing the version chosen by the computer into an array for easier comparisons later.
 var computerChooseVersionArray = computerChooseVersion.split("");
 
+console.log(computerChooseVersionArray)
+
 // Storing the verison chosen by the computer as a string of dashes.
 var versionAsDashes = computerChooseVersion.replace(/[a-zA-Z]/g, '-');
+
+console.log(versionAsDashes)
 
 // Storing the string of dashes as an array.
 var versionAsDashesArray = versionAsDashes.split("")
 
-// A function that resets the word/version the user is guessing, sets guesses remaining to 3, and set 
-
-
-
-console.log(computerChooseVersion)
+console.log(versionAsDashesArray)
 
 
 
@@ -44,36 +44,49 @@ var wins = 0;
 
 var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "S", "t", "u", "v", "w", "x", "y", "z"]
 
+var inProgress = false;
 
-function resetGame () {
+function setupGame () {
+
         lettersGuessedArray = [];
         guessesReamining = 3
+        computerChooseVersion = androidVersions[Math.floor(Math.random() * androidVersions.length)];
+        computerChooseVersionArray = computerChooseVersion.split("")
+        versionAsDashes = computerChooseVersion.replace(/[a-zA-Z]/g, '-')
         versionAsDashesArray = versionAsDashes.split("")
+        return computerChooseVersionArray, versionAsDashesArray, currentVersionText.textContent = versionAsDashesArray.join("  "),
+        guessesRemainingText.textContent = guessesRemaining = 3,
+        lettersGuessed.innerText = lettersGuessedArray.join("  "),
+        lossesText.textContent = losses,
+        winsText.textContent = wins,
+        document.getElementById("current-game-message").textContent = "Android is an open source operating system beta released in 2007."
 }
 
 
-// Setting message user will be paying attention to at game start.
-document.getElementById("current-game-message").textContent = "Press any Letter to Get Started!";
+
+document.getElementById("current-game-message").textContent = "Click New Version to Get Started!";
+document.getElementById("reset").onclick = function () {setupGame()};
+
 
 // Creating an event that will be executed when the user presses any key.
 document.onkeyup = function (event) {
-
-        // Hiding the message user first saw providing directions for the game.
-        document.getElementById("current-game-message").textContent = "";
 
         // storying the user's input ket as a variable to be utilized.
         var userGuess = event.key.toLowerCase();
 
        
-        if (guessesRemaining === 0) {
+        if (guessesRemaining === 1) {
                     
                 // Adds one to losses, resets guessesRemaining to 3, resets the Letters Already Guessed,
                 //  alerts the user they have lost and to try again.
-                document.getElementById("current-game-message").textContent = "YOU ARE OUT OF GUESSES. PRESS ANY KEY TO PLAY AGAIN"
+                guessesRemaining = 0
+                document.getElementById("current-game-message").textContent = "YOU HAVE GAINED A LOSS. CLICK NEW VERSION TO PLAY AGAIN"
                 losses++;
-                document.onkeyup = resetGame()
+                // document.onkeyup = function () {
+                // }
 
-                }
+        }
+
        
         // if the userGuess is a letter, and the Android Version the computer chose for the user to guess does not contain the
         //  letter the user guesses AND the letter has not already been guessed, this code will run.
@@ -86,92 +99,52 @@ document.onkeyup = function (event) {
         }
 
 
-//         console.log(userGuess);
-//         // console.log(letters);
-//         // console.log(letters.test(userGuess));
-//         console.log(computerChooseVersionArray.includes(userGuess));
-//         console.log(lettersGuessedArray.includes(userGuess));
-//         console.log(lettersGuessedArray);
-
-//                 // if the above conditions are met and guessesRemaining = 0, this code will run.
-//                 // if (guessesRemaining === 0) {
-                    
-//                 //         // Adds one to losses, resets guessesRemaining to 3, resets the Letters Already Guessed,
-//                 //         //  alerts the user they have lost and to try again.
-//                 //         document.getElementById("current-game-message").textContent = "YOU ARE OUT OF GUESSES. PRESS ANY KEY TO PLAY AGAIN"
-//                 //         losses++;
-//                 //         resetGame ()
-
-//                 //         }
-
-
-
-
-// // }
-
-
-
-
-
-
-
+        // console.log(userGuess);
+        // console.log(letters);
+        // console.log(letters.test(userGuess));
+        // console.log(computerChooseVersionArray.includes(userGuess));
+        // console.log(lettersGuessedArray.includes(userGuess));
+        // console.log(lettersGuessedArray)
 
         // If none of the other above conditions are met, this code will run.
-        else {
-
-                // this code iterates through the Android Version the computer has chosen, 
+        
+                 // this code iterates through the Android Version the computer has chosen, 
                 // checking if the user guessed letter is inside the Android Version the computer selected.
                 // If this is the case, the index of the matching index of the dashes array is set to userGuess, or filled in in the word.
+        
+        
+        else {    
+               
                 for (var i = 0; i < computerChooseVersionArray.length; i++) {
-                        if (computerChooseVersionArray[i] === userGuess) {
+     
+                   if (userGuess === computerChooseVersionArray[i]) {
+    
                                 versionAsDashesArray[i] = userGuess;
-
-                                
-                                console.log(versionAsDashesArray)
-                                console.log(versionAsDashesArray.includes("-"))
-                                console.log(computerChooseVersion)
-                                console.log(androidVersions)
-
-
-                                if (versionAsDashesArray.includes("-") == false) {
-                                        wins++;
-                                        computerChooseVersion = androidVersions[Math.floor(Math.random() * androidVersions.length)]
-                                        guessesRemaining = 3;
-                                       
-                                       
-                                        console.log(versionAsDashesArray)
-                                        console.log(versionAsDashesArray.includes("-"))
-                                        console.log(computerChooseVersion)
-                                        console.log(androidVersions)
                                 }
 
                         }
+        
+                        
+                   if (versionAsDashesArray.includes("-") == false) {
+                                 document.getElementById("current-game-message").textContent = "YAY! YOU HAVE GAINED A WIN! CLICK NEW VERSION TO PLAY AGAIN."
+                                  wins++;
+                                //  document.onkeyup = function () { }
 
+                        }
+
+
+                console.log(versionAsDashesArray);
+                console.log(versionAsDashesArray.includes("-"));
+                console.log(computerChooseVersionArray);
                 }
-        }
-
-
-
 
         currentVersionText.textContent = versionAsDashesArray.join("  ")
         guessesRemainingText.textContent = guessesRemaining;
         lettersGuessed.innerText = lettersGuessedArray.join("  ");
         lossesText.textContent = losses;
         winsText.textContent = wins;
-}
 
-
-
-
-
-
-currentVersionText.textContent = versionAsDashesArray.join("  ")
-guessesRemainingText.textContent = guessesRemaining;
-lossesText.textContent = losses;
-winsText.textContent = wins;
-
-
-
+        }
 
 
 
