@@ -48,6 +48,7 @@ var inProgress = false;
 
 function setupGame () {
 
+
         lettersGuessedArray = [];
         guessesReamining = 3
         computerChooseVersion = androidVersions[Math.floor(Math.random() * androidVersions.length)];
@@ -65,12 +66,11 @@ function setupGame () {
 
 
 document.getElementById("current-game-message").textContent = "Click New Version to Get Started!";
-document.getElementById("reset").onclick = function () {setupGame()};
+document.getElementById("reset").onclick = function () {setupGame() , 
 
 
 // Creating an event that will be executed when the user presses any key.
 document.onkeyup = function (event) {
-
         // storying the user's input ket as a variable to be utilized.
         var userGuess = event.key.toLowerCase();
 
@@ -83,8 +83,7 @@ document.onkeyup = function (event) {
                 guessesRemaining = 0
                 document.getElementById("current-game-message").textContent = "YOU HAVE GAINED A LOSS. CLICK NEW VERSION TO PLAY AGAIN"
                 losses++;
-                // document.onkeyup = function () {
-                // }
+                document.onkeyup = function () { }
 
         }
 
@@ -129,7 +128,7 @@ document.onkeyup = function (event) {
                    if (versionAsDashesArray.includes("-") == false) {
                                  document.getElementById("current-game-message").textContent = "YAY! YOU HAVE GAINED A WIN! CLICK NEW VERSION TO PLAY AGAIN."
                                   wins++;
-                                //  document.onkeyup = function () { }
+                                 document.onkeyup = function () { }
 
                         }
 
@@ -148,8 +147,7 @@ document.onkeyup = function (event) {
         }
 
 
-
-
+}
 
 
 
