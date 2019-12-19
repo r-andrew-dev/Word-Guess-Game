@@ -1,4 +1,7 @@
 
+// var wordGuessGame = {
+
+
 // Sets up elements in the HTML to be dynamically changed using Javascript
 var directionsText = document.getElementById("directions-text")
 var currentVersionText = document.getElementById("current-version");
@@ -12,7 +15,8 @@ var lossesText = document.getElementById("losses");
 var androidVersions = ["cupcake", "donut", "eclair", "froyo", "gingerbread", "honeycomb", "icecreamsandwich", "jellybean", "kitkat", "lollipop", "marshmallow", "nougat", "oreo", "pie"];
 
 // Allowing the computer to randomly choose the version the user will try to guess.
-var computerChooseVersion = androidVersions[Math.floor(Math.random() * androidVersions.length)];
+var computerChooseVersion = androidVersions[Math.floor(Math.random() * androidVersions.length)]
+
 
 
 // Storing the version chosen by the computer into an array for easier comparisons later.
@@ -23,6 +27,8 @@ var versionAsDashes = computerChooseVersion.replace(/[a-zA-Z]/g, '-');
 
 // Storing the string of dashes as an array.
 var versionAsDashesArray = versionAsDashes.split("")
+
+// A function that resets the word/version the user is guessing, sets guesses remaining to 3, and set 
 
 
 
@@ -36,10 +42,18 @@ var lettersGuessedArray = [];
 var losses = 0;
 var wins = 0;
 
+var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "S", "t", "u", "v", "w", "x", "y", "z"]
+
+
+function resetGame () {
+        lettersGuessedArray = [];
+        guessesReamining = 3
+        versionAsDashesArray = versionAsDashes.split("")
+}
+
 
 // Setting message user will be paying attention to at game start.
 document.getElementById("current-game-message").textContent = "Press any Letter to Get Started!";
-
 
 // Creating an event that will be executed when the user presses any key.
 document.onkeyup = function (event) {
@@ -51,30 +65,50 @@ document.onkeyup = function (event) {
         var userGuess = event.key.toLowerCase();
 
        
-        // if the Android Version the computer chose for the user to guess does not contain the
-        //  letter the user guesses AND the letter has not already been guessed, this code will run
-        if (computerChooseVersionArray.includes(userGuess) == false && lettersGuessedArray.includes(userGuess) == false) {
+        if (guessesRemaining === 0) {
+                    
+                // Adds one to losses, resets guessesRemaining to 3, resets the Letters Already Guessed,
+                //  alerts the user they have lost and to try again.
+                document.getElementById("current-game-message").textContent = "YOU ARE OUT OF GUESSES. PRESS ANY KEY TO PLAY AGAIN"
+                losses++;
+                document.onkeyup = resetGame()
 
+                }
+       
+        // if the userGuess is a letter, and the Android Version the computer chose for the user to guess does not contain the
+        //  letter the user guesses AND the letter has not already been guessed, this code will run.
+        else if (letters.indexOf(userGuess) > -1 && computerChooseVersionArray.includes(userGuess) == false && lettersGuessedArray.includes(userGuess) == false) {
               
                 // adds the usersGuess into the lettersGuessedArray and decrements guesses remaining by one.
                 lettersGuessedArray.push(userGuess);
                 guessesRemaining--;
 
-                // if the above conditions are met and guessesRemaining = 0, this code will run.
-                if (guessesRemaining === 0) {
-                    
-                        // Adds one to losses, resets guessesRemaining to 3, resets the Letters Already Guessed,
-                        //  alerts the user they have lost and to try again.
-                        losses++;
-                        guessesRemaining = 3;
-                        lettersGuessedArray = [];
-                        document.getElementById("current-game-message").textContent = "YOU ARE OUT OF GUESSES. TRY AGAIN."
-
-
-
-                }
-
         }
+
+
+//         console.log(userGuess);
+//         // console.log(letters);
+//         // console.log(letters.test(userGuess));
+//         console.log(computerChooseVersionArray.includes(userGuess));
+//         console.log(lettersGuessedArray.includes(userGuess));
+//         console.log(lettersGuessedArray);
+
+//                 // if the above conditions are met and guessesRemaining = 0, this code will run.
+//                 // if (guessesRemaining === 0) {
+                    
+//                 //         // Adds one to losses, resets guessesRemaining to 3, resets the Letters Already Guessed,
+//                 //         //  alerts the user they have lost and to try again.
+//                 //         document.getElementById("current-game-message").textContent = "YOU ARE OUT OF GUESSES. PRESS ANY KEY TO PLAY AGAIN"
+//                 //         losses++;
+//                 //         resetGame ()
+
+//                 //         }
+
+
+
+
+// // }
+
 
 
 
@@ -101,7 +135,9 @@ document.onkeyup = function (event) {
 
                                 if (versionAsDashesArray.includes("-") == false) {
                                         wins++;
-                                        delete 
+                                        computerChooseVersion = androidVersions[Math.floor(Math.random() * androidVersions.length)]
+                                        guessesRemaining = 3;
+                                       
                                        
                                         console.log(versionAsDashesArray)
                                         console.log(versionAsDashesArray.includes("-"))
