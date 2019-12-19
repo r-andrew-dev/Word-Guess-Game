@@ -54,7 +54,7 @@ function setupGame () {
         computerChooseVersionArray = computerChooseVersion.split("")
         versionAsDashes = computerChooseVersion.replace(/[a-zA-Z]/g, '-')
         versionAsDashesArray = versionAsDashes.split("")
-        return computerChooseVersionArray, versionAsDashesArray, currentVersionText.textContent = versionAsDashesArray.join("  "),
+        return computerChooseVersionArray, versionAsDashesArray, currentVersionText.innerText = versionAsDashesArray.join("  "),
         guessesRemainingText.textContent = guessesRemaining = 3,
         lettersGuessed.innerText = lettersGuessedArray.join("  "),
         lossesText.textContent = losses,
@@ -79,6 +79,7 @@ document.onkeyup = function (event) {
                     
                 // Adds one to losses, resets guessesRemaining to 3, resets the Letters Already Guessed,
                 //  alerts the user they have lost and to try again.
+                lettersGuessedArray.push(userGuess);
                 guessesRemaining = 0
                 document.getElementById("current-game-message").textContent = "YOU HAVE GAINED A LOSS. CLICK NEW VERSION TO PLAY AGAIN"
                 losses++;
