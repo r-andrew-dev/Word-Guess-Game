@@ -3,7 +3,7 @@
   }
   
 img {
-    width: 100px;
+    width: 200px;
     height: auto;
 }
 
@@ -13,48 +13,38 @@ img {
     background-color: #9FC436;
     font-weight: bold;
     font-size: 24px;
+    position: relative;
 }
 
 #score {
 
-    position: fixed;
+    /* position: absolute;
     text-align: right;
     bottom: 0;
-    right: 0;
+    right: 0; */
     color: white;
     font-size: 24px;
     padding: 20px;
-    margin: 5px;
     background-color: purple;
 }
 
-/* #current-game-message {
-
-    font-size: 32px;
-    text-decoration: italic;
-    color: black;
-    font-weight: bold;
-    background-color: #3DDB85;
-} */
-
 #current-version {
-    font-size: 40px;
+    font-size: 52px;
     text-align: center;
     color: black;
-    margin: 100px;
+    margin: 15px;
     position: relative;
 
 }
 
 #refreshed-content {
-    color: #3DDB85;
-    margin: 5px;
+    color: white;
     font-size: 22px;
     padding: 20px;
     background-color: purple;
-    position: absolute;
+    /* position: absolute;
     bottom: 0;
-    left: 0;
+    left: 0; */
 
 }
 
