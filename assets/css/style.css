@@ -2,14 +2,15 @@
     box-sizing: border-box;
   }
   
+img {
+    width: 100px;
+    height: auto;
+}
 
-
-#directions-Text {
+.jumbotron.custom {
     text-align: center;
-    padding: 20px;
     margin: 5px;
-    color: #3DDB85;
-    background-color: purple;
+    background-color: #9FC436;
     font-weight: bold;
     font-size: 24px;
 }
@@ -27,20 +28,21 @@
     background-color: purple;
 }
 
-#current-game-message {
+/* #current-game-message {
 
     font-size: 32px;
     text-decoration: italic;
     color: black;
     font-weight: bold;
     background-color: #3DDB85;
-}
+} */
 
 #current-version {
     font-size: 40px;
     text-align: center;
     color: black;
-    margin: 50px;
+    margin: 100px;
+    position: relative;
 
 }
 
@@ -50,7 +52,7 @@
     font-size: 22px;
     padding: 20px;
     background-color: purple;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
 

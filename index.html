@@ -4,26 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <title>GuessThatOS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-   
+
 </head>
 
 <body>
 
-    <div>
+    <div class="jumbotron custom jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Welcome to Guess that OS!</h1>
+            <p class="lead">The Android operating system guessing game featuring the
+                versions of Android. How's your Android knowledge? See those dashes? That's the nickname for the OS
+                version. Begin
+                guessing letters by typing the corresponding key. Careful though! You only get three guesses before
+                your loss count goes up and a new OS version is chosen.
+                <hr class="my-4">
+                <p class="m-4"> Have fun!</p>
+                <p class="m-4" id="current-game-message"></p>
+                <button type="button" class="btn btn-dark" id="reset">NEW VERSION</button>
+        </div>
+    </div>
 
-        <p id="directions-Text">Welcome to Guess that OS! The Android operating system guessing game featuring the
-            versions of Android. How's your Android knowledge? See those dashes? That's the nickname for the OS version. Begin
-            guessing letters by typing the corresponding key. Careful though! You only get three guesses before
-            your loss count goes up and a new OS version is chosen. <br> Have fun!</p>
+    <br>
 
-        <p id ="current-game-message"></p>
-<br>
-      
-    
-        <p id="current-version"></p>
-        <br>
+
+    <p id="current-version"></p>
+    <br>
 
     <div id="refreshed-content">
         <p>Letters Already Guessed</p>
@@ -34,27 +43,24 @@
         <br>
         <span id="guesses-remaining"></span>
         <br>
-        <img id="dessertPicture" src="#" alt="Picture of Dessert Corresponding to Android Version">
+        <img id="android-or-dessert-picture" src="assets/images/initialAndroid.jpeg"
+            alt="Picture of Android or Dessert Corresponding to Android Version">
     </div>
 
-<br>
-       
-     <div id="score">  
+    <br>
+
+    <div id="score">
         <p>WINS</p>
-        <br> 
+        <br class="m-2">
         <span id="wins"></span>
-        <br>
+        <br class="m-2">
         <p>LOSSES</p>
         <br>
         <span id="losses"></span>
-        <br>
-        <button id="reset">NEW VERSION</button>
-        <br>
-        <br>
-     </div>
+    </div>
 
 
-     <p>  
+    <p>
 
 
 
@@ -69,10 +75,10 @@
 
 
 
-     </p>
-        
+    </p>
 
-       
+
+
     </div>
 
 
@@ -106,7 +112,7 @@
 
 
 
-<script src="assets/javascript/game.js"></script>
+    <script src="assets/javascript/game.js"></script>
 </body>
 
 </html>
